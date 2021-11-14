@@ -51,10 +51,10 @@ function POMDPs.states(g::gPOMDP3)
     return IPOMDPs.states(frame)
 end
 
-function POMDPs.n_states(g::gPOMDP3)
-    l = size(POMDPs.states(g), 1)
-    return l
-end
+# function POMDPs.n_states(g::gPOMDP3)
+#     l = size(POMDPs.states(g), 1)
+#     return l
+# end
 
 function POMDPs.stateindex(g::gPOMDP3{S,A,W}, s::S) where {S,A,W}
     return IPOMDPs.stateindex(g.belief.ipomdp, s)
@@ -68,7 +68,7 @@ function POMDPs.initialstate_distribution(g::gPOMDP3)
     # Belief marginalization
     b = g.belief.dist
     states = POMDPs.states(g)
-    probs = zeros(Float64, POMDPs.n_states(g))
+    probs = zeros(Float64, length(POMDPs.states(g)))
     for (i,s) in enumerate(states)
         for (iS,p) in b
             if (iS.state == s)
@@ -103,10 +103,10 @@ function POMDPs.actions(g::gPOMDP3)
     return IPOMDPs.actions_agent(agent)
 end
 
-function POMDPs.n_actions(g::gPOMDP3{S,A,W}) where {S,A,W}
-    l = size(POMDPs.actions(g), 1)
-    return l
-end
+# function POMDPs.n_actions(g::gPOMDP3{S,A,W}) where {S,A,W}
+#     l = size(POMDPs.actions(g), 1)
+#     return l
+# end
 
 function POMDPs.actionindex(g::gPOMDP3{S,A,W}, action::A) where {S,A,W}
     frame = g.belief.ipomdp
@@ -123,10 +123,10 @@ function POMDPs.observations(g::gPOMDP3)
     return IPOMDPs.observations_agent(agent)
 end
 
-function POMDPs.n_observations(g::gPOMDP3{S,A,W}) where {S,A,W}
-    l = size(POMDPs.observations(g), 1)
-    return l
-end
+# function POMDPs.n_observations(g::gPOMDP3{S,A,W}) where {S,A,W}
+#     l = size(POMDPs.observations(g), 1)
+#     return l
+# end
 
 function POMDPs.obsindex(g::gPOMDP3{S,A,W}, observation::W) where {S,A,W}
     frame = g.belief.ipomdp
