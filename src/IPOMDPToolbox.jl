@@ -21,6 +21,6 @@ export
     include("interactivebelief.jl")
     include("gpomdp.jl")
     include("reductionsolver.jl")
-    include("ipomdpstoolbox.jl")
+    include("ipomdptoolbox.jl")
     include("functions.jl")
 end
