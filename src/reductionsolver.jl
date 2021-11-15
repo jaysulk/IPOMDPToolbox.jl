@@ -42,17 +42,31 @@ end
 Return:
     action::A
 """
+# function IPOMDPs.action(policy::ReductionPolicy{S,A,W}, b::DiscreteInteractiveBelief{S,A,W}) where {S,A,W}
+#     pomdp = gPOMDP3(b)
+#     name = "$(hash(pomdp))$(rand())"
+#     pol = SARSOP.POMDPPolicy(pomdp, "./tmp/_$name.policy")
+#     solver = SARSOP.SARSOPSolver(;timeout=policy.timeout)
+#     e_policy = SARSOP.solve(solver, pomdp, pol, silent=true, pomdp_file_name="./tmp/_$name.pomdpx")
+#     updater = SARSOP.updater(e_policy)
+#     belief = SARSOP.initialize_belief(updater, POMDPs.initialstate_distribution(pomdp))
+#     a = SARSOP.action(e_policy, belief)
+#     rm("./tmp/_$name.pomdpx", force=true)
+#     rm("./tmp/_$name.policy", force=true)
+#     return a
+# end
+
 function IPOMDPs.action(policy::ReductionPolicy{S,A,W}, b::DiscreteInteractiveBelief{S,A,W}) where {S,A,W}
     pomdp = gPOMDP3(b)
     name = "$(hash(pomdp))$(rand())"
-    pol = SARSOP.POMDPPolicy(pomdp, "./tmp/_$name.policy")
-    solver = SARSOP.SARSOPSolver(;timeout=policy.timeout)
-    e_policy = SARSOP.solve(solver, pomdp, pol, silent=true, pomdp_file_name="./tmp/_$name.pomdpx")
-    updater = SARSOP.updater(e_policy)
-    belief = SARSOP.initialize_belief(updater, POMDPs.initialstate_distribution(pomdp))
-    a = SARSOP.action(e_policy, belief)
-    rm("./tmp/_$name.pomdpx", force=true)
-    rm("./tmp/_$name.policy", force=true)
+    pol = BasicPOMCP.POMDPPolicy(pomdp, "./tmp/_$name.policy")
+    solver = BasicPOMCP.POMCPSolver(; timeout = policy.timeout)
+    e_policy = BasicPOMCP.solve(solver, pomdp, pol, silent = true, pomdp_file_name = "./tmp/_$name.pomdpx")
+    updater = BasicPOMCP.updater(e_policy)
+    belief = BasicPOMCP.initialize_belief(updater, POMDPs.initialstate_distribution(pomdp))
+    a = BasicPOMCP.action(e_policy, bBasicPOMCPelief)
+    rm("./tmp/_$name.pomdpx", force = true)
+    rm("./tmp/_$name.policy", force = true)
     return a
 end
 

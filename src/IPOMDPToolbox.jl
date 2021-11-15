@@ -2,7 +2,8 @@ module IPOMDPToolbox
 
 using POMDPs
 using IPOMDPs
-using SARSOP
+#using SARSOP
+using BasicPOMCP
 using POMDPModelTools
 using BeliefUpdaters
 import Base: (==)
