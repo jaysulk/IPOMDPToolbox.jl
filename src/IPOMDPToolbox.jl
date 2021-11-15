@@ -1,6 +1,7 @@
 module IPOMDPToolbox
 
 using POMDPs
+using POMDPPolicies
 using IPOMDPs
 using SARSOP
 using POMDPModelTools
