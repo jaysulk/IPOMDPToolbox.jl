@@ -16,11 +16,23 @@ export
     DiscreteInteractiveUpdater,
     
     ReductionSolver,
-    ReductionPolicy
+    ReductionPolicy,
+
+    IBPISolver,
+    IBPIPolicy,
+
+    #temporary
+    BPIPolicy,
+    solve_fresh!,
+    continue_solving,
+    print_solver_stats,
+    load_policy,
+    IBPIsimulate
 
     include("interactivebelief.jl")
     include("gpomdp.jl")
     include("reductionsolver.jl")
+    include("ibpisolver.jl")
     include("ipomdpstoolbox.jl")
     include("functions.jl")
 end
