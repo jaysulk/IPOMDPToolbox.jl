@@ -4,6 +4,7 @@ using POMDPs
 using IPOMDPs
 using SARSOP
 using POMDPTools
+using POMDPPolicies
 using BeliefUpdaters
 import Base: (==)
 export

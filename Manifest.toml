@@ -2,7 +2,7 @@
 
 julia_version = "1.8.0"
 manifest_format = "2.0"
-project_hash = "d868639249af8f146d7ee373c1fbc2920c46c101"
+project_hash = "a13138d22b4495b1b2e4f689baf3875066682fdd"
 
 [[deps.Adapt]]
 deps = ["LinearAlgebra"]
@@ -515,6 +515,12 @@ deps = ["CommonRLInterface", "Distributions", "LinearAlgebra", "POMDPLinter", "P
 git-tree-sha1 = "36d32d62e036ae8ebb9b8efe9e8658f902815700"
 uuid = "08074719-1b2a-587c-a292-00f91cc44415"
 version = "0.3.13"
+
+[[deps.POMDPPolicies]]
+deps = ["Distributions", "LinearAlgebra", "POMDPTools", "POMDPs", "Parameters", "Random", "Reexport", "SparseArrays", "StatsBase"]
+git-tree-sha1 = "bd72fbfea89a64946963518aa53097e2a1233c59"
+uuid = "182e52fb-cfd0-5e46-8c26-fd0667c990f4"
+version = "0.4.3"
 
 [[deps.POMDPTools]]
 deps = ["CommonRLInterface", "DataFrames", "Distributed", "Distributions", "LinearAlgebra", "NamedTupleTools", "POMDPLinter", "POMDPs", "Parameters", "ProgressMeter", "Random", "Reexport", "SparseArrays", "Statistics", "StatsBase", "Tricks", "UnicodePlots"]
