@@ -682,7 +682,8 @@ IBPIPolicyUtils:
 			end
 			pop!(new_nodes, temp_id)
 			#@deb("$(length(new_nodes))")
-			lpmodel = JuMP.Model(with_optimizer(CPLEX.Optimizer))
+			lpmodel = JuMP.Model()
+			set_optimizer(lpmodel, CPLEX.Optimizer)
 			CplexSolver(CPX_PARAM_SCRIND=0)
 
 			#define variables for LP. c(i)
@@ -807,7 +808,8 @@ IBPIPolicyUtils:
 			end
 			pop!(new_nodes, temp_id)
 			#@deb("$(length(new_nodes))")
-			lpmodel = JuMP.Model(with_optimizer(CPLEX.Optimizer))
+			lpmodel = JuMP.Model()
+			set_optimizer(lpmodel, CPLEX.Optimizer)
 			CplexSolver(CPX_PARAM_SCRIND=0)
 
 			#define variables for LP. c(i)
@@ -1036,7 +1038,9 @@ IBPIPolicyUtils:
 				end
 				nodecounter = 0
 			end
-			lpmodel = JuMP.Model(with_optimizer(CPLEX.Optimizer; CPX_PARAM_SCRIND=0))
+			lpmodel = JuMP.Model()
+			set_optimizer(lpmodel, CPLEX.Optimizer)
+			set_parameters(lpmodel, "CPX_PARAM_SCRIND" => 0)
 
 			#define variables for LP. c(a, n, z)
 			@variable(lpmodel, canz[a=1:n_actions, z=1:n_observations, n=1:n_nodes] >= 0.0)

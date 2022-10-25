@@ -247,7 +247,9 @@ function partial_backup!(controller::InteractiveController{A, W}, controllers_j:
 			nodecounter = 0
 		end
 
-		lpmodel = JuMP.Model(with_optimizer(CPLEX.Optimizer; CPX_PARAM_SCRIND=0))
+		lpmodel = JuMP.Model(with_optimizer(CPLEX.Optimizer))
+		set_parameters(lpmodel, "CPX_PARAM_SCRIND" => 0)
+
 
 		#define variables for LP. c(a, n, z)
 		@variable(lpmodel, canz[a=1:n_actions, z=1:n_observations, n=1:n_nodes] >= 0.0)
