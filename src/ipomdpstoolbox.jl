@@ -2,7 +2,7 @@
     Wrapper for representing the model of a POMDP frame
     Uses SARSOP in order to solve the POMDP
 """
-struct pomdpModel{S,A,W,P} <: IPOMDPs.Model{A,W,P}
+struct pomdpModel{S,A,W,P} <: IPOMDPs.Model{A,W}
     history::DiscreteBelief
 
     # Immutable part of the structure! This is commo to all the models of the same frame!
@@ -18,7 +18,7 @@ end
     Wrapper for reresenting the model of a IPOMDP frame
     uses ReductionSolver in order to solve the IPOMDP
 """
-struct ipomdpModel{S,A,W,P} <: IPOMDPs.Model{A,W,P}
+struct ipomdpModel{S,A,W,P} <: IPOMDPs.Model{A,W}
 	history::DiscreteInteractiveBelief
 	frame::IPOMDP{S,A,W}
     updater::DiscreteInteractiveUpdater
