@@ -2,7 +2,7 @@
 
 julia_version = "1.8.0"
 manifest_format = "2.0"
-project_hash = "0b715bb89af4ccb7fc229b50ea15ac2f2127c88f"
+project_hash = "f6523784c5d4a5d3c1791b6d27adaee66651cedf"
 
 [[deps.Adapt]]
 deps = ["LinearAlgebra"]
@@ -25,6 +25,12 @@ uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
 
 [[deps.Base64]]
 uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
+
+[[deps.BeliefUpdaters]]
+deps = ["POMDPTools", "POMDPs", "Random", "Statistics", "StatsBase"]
+git-tree-sha1 = "8819a9a0e9e9002125ae55626e10f0c210959c30"
+uuid = "8bb6e9a1-7d73-552c-a44a-e5dc5634aac4"
+version = "0.2.3"
 
 [[deps.Bzip2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
