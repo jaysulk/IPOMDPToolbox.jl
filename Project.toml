@@ -6,6 +6,5 @@ version = "0.1.0"
 [deps]
 BeliefUpdaters = "8bb6e9a1-7d73-552c-a44a-e5dc5634aac4"
 IPOMDPs = "400b8fa6-c29f-11e8-147f-97038bb7f9c1"
-POMDPTools = "7588e00f-9cae-40de-98dc-e0c70c48cdd7"
 POMDPs = "a93abf59-7444-517b-a68a-c42f96afdd7d"
 SARSOP = "cef570c6-3a94-5604-96b7-1a5e143043f2"
