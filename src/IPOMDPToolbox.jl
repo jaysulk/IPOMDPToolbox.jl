@@ -36,4 +36,5 @@ export
     include("ibpisolver.jl")
     include("ipomdpstoolbox.jl")
     include("functions.jl")
+    include("simulator.jl")
 end
