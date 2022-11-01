@@ -44,12 +44,7 @@ function IPOMDPs.Model(pomdp::POMDP;depth=0)
     end
     name = hash(pomdp)
     solver = SARSOP.SARSOPSolver(timeout=t)
-    try
-        policy = SARSOP.load_policy(pomdp, "./tmp/_temp_$name.policy")
-    catch
-        policy = RandomPolicy(pomdp)
-    end
-    e_policy = POMDPs.solve(solver, pomdp, policy, silent=true, pomdp_file_name="./tmp/_temp_$name.pomdpx")
+    e_policy = SARSOP.solve(solver, pomdp)
     updater = SARSOP.updater(e_policy)
     belief = SARSOP.initialize_belief(updater, POMDPs.initialstate_distribution(pomdp))
 
