@@ -39,9 +39,9 @@ end
 function IPOMDPs.Model(pomdp::POMDP;depth=0)
 
     solver = POMCPOWSolver(criterion=MaxUCB(20.0))
-    policy = POMCPOW.solve(solver, pomdp)
-    updater = POMCPOW.updater(policy)
-    belief = POMCPOW.initialize_belief(updater, POMDPs.initialstate_distribution(pomdp))
+    policy = POMDPs.solve(solver, pomdp)
+    updater = POMDPs.updater(policy)
+    belief = POMDPs.initialize_belief(updater, POMDPs.initialstate_distribution(pomdp))
 
     return pomdpModel(belief, pomdp, updater, policy, depth)
 end
