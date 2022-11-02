@@ -44,15 +44,11 @@ function IPOMDPs.Model(pomdp::POMDP;depth=0)
     end
     name = hash(pomdp)
     solver = SARSOP.SARSOPSolver(timeout=t)
-    e_policy = SARSOP.solve(solver, pomdp)
-    updater = SARSOP.updater(e_policy)
+    policy = SARSOP.solve(solver, pomdp)
+    updater = SARSOP.updater(policy)
     belief = SARSOP.initialize_belief(updater, POMDPs.initialstate_distribution(pomdp))
 
-    # Remove temporary files
-    rm("./tmp/_temp_$name.policy", force=true)
-    rm("./tmp/_temp_$name.pomdpx", force=true)
-
-    return pomdpModel(belief, pomdp, updater, e_policy, depth)
+    return pomdpModel(belief, pomdp, updater, policy, depth)
 end
 function IPOMDPs.Model(ipomdp::IPOMDP;depth=0)
     t = 10.0
