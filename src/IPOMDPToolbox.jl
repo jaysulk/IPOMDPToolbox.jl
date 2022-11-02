@@ -6,6 +6,7 @@ using SARSOP
 using POMDPTools
 using POMDPPolicies
 using BeliefUpdaters
+using POMCPOW
 import Base: (==)
 export
     pomdpModel,

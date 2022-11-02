@@ -5,7 +5,7 @@
 struct pomdpModel{S,A,W,P} <: IPOMDPs.Model{A,W}
     history::DiscreteBelief
 
-    # Immutable part of the structure! This is commo to all the models of the same frame!
+    # Immutable part of the structure! This is common to all the models of the same frame!
     frame::POMDP{S,A,W}
 
     # Data
@@ -37,16 +37,11 @@ function IPOMDPs.Model(model;depth,solver,force)
 end
 
 function IPOMDPs.Model(pomdp::POMDP;depth=0)
-    # Timeout
-    t = 10.0
-    for i = 1:depth
-        t = t/10
-    end
-    name = hash(pomdp)
-    solver = SARSOP.SARSOPSolver(timeout=t)
-    policy = SARSOP.solve(solver, pomdp)
-    updater = SARSOP.updater(policy)
-    belief = SARSOP.initialize_belief(updater, POMDPs.initialstate_distribution(pomdp))
+
+    solver = POMCPOWSolver(criterion=MaxUCB(20.0))
+    policy = POMCPOW.solve(solver, pomdp)
+    updater = POMCPOW.updater(policy)
+    belief = POMCPOW.initialize_belief(updater, POMDPs.initialstate_distribution(pomdp))
 
     return pomdpModel(belief, pomdp, updater, policy, depth)
 end
